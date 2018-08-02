@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       flash[:notice] = "Login Successful!"
       redirect_to @student
     else
-      falsh[:notice] = "Invalid user_name or password"
+      flash[:notice] = "Invalid user_name or password"
       redirect_to login_path
     end
   end

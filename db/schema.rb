@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_31_024102) do
+ActiveRecord::Schema.define(version: 2018_08_02_162145) do
 
   create_table "courses", force: :cascade do |t|
-    t.string "title"
-    t.string "category"
+    t.string "name"
     t.integer "school_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -29,12 +28,20 @@ ActiveRecord::Schema.define(version: 2018_07_31_024102) do
     t.index ["student_id"], name: "index_hobbies_on_student_id"
   end
 
-  create_table "passes", force: :cascade do |t|
+  create_table "offers", force: :cascade do |t|
+    t.string "name"
     t.integer "price"
-    t.integer "student_id"
-    t.integer "school_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "passes", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "school_id"
+    t.integer "offer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["offer_id"], name: "index_passes_on_offer_id"
     t.index ["school_id"], name: "index_passes_on_school_id"
     t.index ["student_id"], name: "index_passes_on_student_id"
   end
@@ -47,9 +54,8 @@ ActiveRecord::Schema.define(version: 2018_07_31_024102) do
   end
 
   create_table "students", force: :cascade do |t|
-    t.string "name"
     t.string "user_name"
-    t.string "password"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

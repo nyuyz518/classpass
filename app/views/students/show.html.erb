@@ -1,3 +1,7 @@
-<h2> <%= @student.name %>'s Show Page </h2>
+<h2> <%= @student.user_name %>'s Profile </h2>
+<h3> view your hobbies and classpassese here</h3>
 
-later on, show each student's hobbies and classpass
+<% @student.offers.each do |offer| %>
+    <li>Class Pass Offer: <%= offer.name %></li>
+    <li>Price: $<%= offer.price %></li>
+  <% end %>
