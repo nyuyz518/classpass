@@ -1,0 +1,16 @@
+<h2>Create an Account / Join the cool students club </h2>
+
+<%= form_for @student do |f| %>
+<% if @student.errors.any? %>
+  <% @student.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+<% end %>
+
+  <%= f.label :user_name %>
+  <%= f.text_field :user_name %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+<%= f.submit %>
+
+<% end %>

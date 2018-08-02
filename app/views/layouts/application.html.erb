@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Classpass</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if logged_in? %>
+      <h3>Welcome, <%= current_student.user_name %></h3>
+      <%= button_to "Logout", logout_path, method: :delete %>
+    <% else %>
+      <%= button_to "Sign Up", new_student_path, method: :get %>
+      <%= button_to "Login", login_path, method: :get %>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
